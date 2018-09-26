@@ -558,3 +558,14 @@ Feature: Step - has()
     Then the result should be unordered
       | result |
       | d[6].l |
+
+  Scenario: g_V_hasXname_containsXarkXX
+    Given the modern graph
+    And the traversal of
+      """
+      g.V().has("name", TP.contains("ark"))
+      """
+    When iterated to list
+    Then the result should be unordered
+      | result |
+      | v[marko] |

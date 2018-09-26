@@ -24,6 +24,7 @@ import org.apache.tinkerpop.gremlin.process.traversal.Bytecode;
 import org.apache.tinkerpop.gremlin.process.traversal.Operator;
 import org.apache.tinkerpop.gremlin.process.traversal.P;
 import org.apache.tinkerpop.gremlin.process.traversal.SackFunctions;
+import org.apache.tinkerpop.gremlin.process.traversal.TP;
 import org.apache.tinkerpop.gremlin.process.traversal.Translator;
 import org.apache.tinkerpop.gremlin.process.traversal.Traversal;
 import org.apache.tinkerpop.gremlin.process.traversal.TraversalSource;
@@ -195,6 +196,8 @@ public class PythonTranslator implements Translator.ScriptTranslator {
             return "Pick." + resolveSymbol(object.toString());
         else if (object instanceof Enum)
             return convertStatic(((Enum) object).getDeclaringClass().getSimpleName() + ".") + resolveSymbol(object.toString());
+        else if (object instanceof TP)
+            return convertTPToString((TP) object, new StringBuilder()).toString();
         else if (object instanceof P)
             return convertPToString((P) object, new StringBuilder()).toString();
         else if (object instanceof Element) {
@@ -234,6 +237,11 @@ public class PythonTranslator implements Translator.ScriptTranslator {
             current.append(")");
         } else
             current.append(convertStatic("P.")).append(p.getBiPredicate().toString()).append("(").append(convertToString(p.getValue())).append(")");
+        return current;
+    }
+
+    private StringBuilder convertTPToString(final TP p, final StringBuilder current) {
+        current.append(convertStatic("TP.")).append(p.getBiPredicate().toString()).append("(").append(convertToString(p.getValue())).append(")");
         return current;
     }
 

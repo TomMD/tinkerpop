@@ -109,7 +109,7 @@ public class ProcessStandardSuite extends AbstractGremlinSuite {
      */
     private static final Class<?>[] allTests = new Class<?>[]{
             // branch
-            BranchTest.Traversals.class,
+            /*BranchTest.Traversals.class,
             ChooseTest.Traversals.class,
             OptionalTest.Traversals.class,
             LocalTest.Traversals.class,
@@ -122,8 +122,8 @@ public class ProcessStandardSuite extends AbstractGremlinSuite {
             CyclicPathTest.Traversals.class,
             DedupTest.Traversals.class,
             DropTest.Traversals.class,
-            FilterTest.Traversals.class,
-            HasTest.Traversals.class,
+            FilterTest.Traversals.class,*/
+            HasTest.Traversals.class/*,
             IsTest.Traversals.class,
             OrTest.Traversals.class,
             RangeTest.Traversals.class,
@@ -191,7 +191,7 @@ public class ProcessStandardSuite extends AbstractGremlinSuite {
             SubgraphStrategyProcessTest.class,
 
             // optimizations
-            IncidentToAdjacentStrategyProcessTest.class
+            IncidentToAdjacentStrategyProcessTest.class*/
     };
 
     /**
